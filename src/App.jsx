@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, NavLink } from 'react-router-dom';
 import './App.css';
+import { Login } from './Login';
 
 export const App =() => {
   return (
@@ -22,9 +23,8 @@ export const App =() => {
         </div>
       </nav>
       <Routes>
-        <Route to = "/" element={ <Login /> } />
-        <Route to = "/Registration" element= { <Registration /> } />
-        <Route to = "*" element={ <Login /> } />
+        <Route path = "/" element={ <Login /> } />
+        <Route path = "*" element={ <Login /> } />
         <Route />
       </Routes>
     </Router>
