@@ -42,6 +42,47 @@ export const Registration = () => {
           if (vantaEffect) vantaEffect.destroy();
         };
       }, []);
+      const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+      };
+
+      const generateSalt = (length) => {
+        const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        let salt = "";
+        for (let i = 0; i < length; i++) {
+          const randomIndex = Math.floor(Math.random() * characters.length);
+          salt += characters.charAt(randomIndex);
+        }
+        return salt;
+      };
+      const handleSubmit = async () => {
+        const salt = generateSalt(64);
+        const hashedPassword = sha256(formData.jelszo + salt);
+    
+        const requestBody = {
+          id: 0,
+          felhasznaloNev: formData.felhasznaloNev,
+          teljesNev: formData.teljesNev,
+          salt,
+          hash: hashedPassword,
+          email: formData.email,
+          jogosultsag: 1,
+          aktiv: 0,
+          regisztracioDatuma: new Date().toISOString(),
+          fenykepUtvonal: "default.jpg",
+        };
+    
+        console.log(requestBody);
+    
+        try {
+          const response = await axios.post("https://localhost:5001/api/Registry", requestBody);
+          alert(response.data);
+          navigate("/");
+        } catch (error) {
+          console.error(error);
+          alert("hiba történt a regisztráció során!");
+        }
+    };
       return(
         <div ref={vantaRef} style={{ height: "90vh", color: "#fff", overflow: "hidden" }}>
       <div

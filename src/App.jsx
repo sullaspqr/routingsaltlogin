@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, NavLink } from 'react-router-dom';
 import './App.css';
 import { Login } from './Login';
+import { Registration } from './Registration';
 
 export const App =() => {
   return (
@@ -24,6 +25,7 @@ export const App =() => {
       </nav>
       <Routes>
         <Route path = "/" element={ <Login /> } />
+        <Route path = "/Registration" element={ <Registration /> } />
         <Route path = "*" element={ <Login /> } />
         <Route />
       </Routes>
