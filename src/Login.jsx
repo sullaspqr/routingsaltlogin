@@ -93,7 +93,7 @@ export const Login = () => {
   };
 
   return (
-    <div ref={vantaRef} style={{ height: "100vh", color: "#fff", overflow: "hidden" }}>
+    <div ref={vantaRef} style={{ height: "90vh", color: "#fff", overflow: "hidden" }}>
       <div
         style={{
           position: "absolute",
@@ -110,7 +110,7 @@ export const Login = () => {
         {user ? (
           <>
             <h2>Belépve: {user.name}</h2>
-            {avatar && <img src={avatar} alt="Avatar" style={{ marginTop: "20px", borderRadius: "50%" }} />}
+            {avatar && <img src={avatar} width="60%" height="60%" alt="Avatar" style={{ marginTop: "20px", borderRadius: "50%" }} />}
             <button
               onClick={handleLogout}
               style={{
